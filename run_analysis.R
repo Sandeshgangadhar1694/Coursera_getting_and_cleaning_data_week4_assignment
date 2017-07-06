@@ -60,19 +60,25 @@ Required_Dataset <- Required_Dataset[,which(colnames(Required_Dataset) != "Activ
 names(Required_Dataset) <- gsub(pattern = "mean",replacement = "Mean",names(Required_Dataset))
 names(Required_Dataset) <- gsub(pattern = "std",replacement = "Std",names(Required_Dataset))
 
+#Cleaning Column Names
 names(Required_Dataset) <- gsub(pattern = "-|\\(|\\)|[ID]","",names(Required_Dataset))
 
 library(dplyr)
 library(reshape2)
 
+#Melt dataset to Subject and ActivityLabel
 Required_Dataset_temp <- melt(Required_Dataset,id.vars = c("Subject","ActivityLabel"))
 
 names(Required_Dataset_temp)[-(1:2)] <- c("Measurement","Value")
 
+#Calculate Average by grouping on subject ActivityLabel and MeasumentType
 Average_DataSet <- Required_Dataset_temp %>% group_by(Subject,ActivityLabel,Measurement) %>% summarise(Measurement_Mean = mean(Value))
 rm(Required_Dataset_temp)
 
+#Dcast data back retaining Subject and ActivityLabel Columns and Measurement column
+#is streached with Measurement_Mean value filling the cells
 Average_DataSet <- dcast(data = Average_DataSet,Subject + ActivityLabel ~ Measurement,value.var = "Measurement_Mean")
 
+#Write the average dataset to working directory
 write.table(Average_DataSet,"AverageDataset.txt",row.names = F)
 
