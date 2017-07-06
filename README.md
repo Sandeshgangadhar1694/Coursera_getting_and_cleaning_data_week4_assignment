@@ -1,4 +1,4 @@
-# Coursera_getting_and_cleaning_data_week4_assignment
+# Coursera - Getting and Cleaning Data(Week4 assignment)
 Coursera - Getting and Cleaning Data(Week 4 Assignment)
 
 This repository contains R Code ,Documentation files and a datafile(AverageDataset.txt averages of all the variables in the given dataset as grouped by SubjectID and ActivityLabel)
