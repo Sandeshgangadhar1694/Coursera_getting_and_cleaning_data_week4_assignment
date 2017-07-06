@@ -62,7 +62,9 @@ As mentioned http link was provided for Input which returned .zip file to downlo
    and summarise is used to calculate mean.
    
    
-Variables:</br>
+**Variables:**
+</br>
+</br>
 **Variables of Average Dataset:**</br> 
   "Subject"</br>                      "tBodyAccMeanX"          </br>      "tBodyAccMeanY"               </br>
  "tBodyAccMeanZ"        </br>        "tBodyAccStdX"            </br>     "tBodyAccStdY"                </br>
